@@ -9,7 +9,8 @@ findLostNumberWithRepeated - for other cases
 
  */
 public class NumberTask {
-
+//use one method for all cases
+    
     //Function return smallest missing number or -1 for any array of non-negative numbers
     public int findLostNumberWithRepeated(int[] arr) {
         if (arr == null || arr.length < 2) {
@@ -25,13 +26,14 @@ public class NumberTask {
                 max = temp;
             }
         }
+        //use (max + min) * count / 2 to find expecting sum of all numbers with missing number and return (expectedSum-sumWithMissingNumber)
         //fill array of occurrence
         boolean[] flags = new boolean[max - min + 1];
         for (int i = 0; i < arr.length; i++) {
             int index = max - arr[i];
             flags[index] = true;
         }
-        for (int i = flags.length - 1; i >= 0; i--) {
+        for (int i = flags.length - 1; i >= 0; i--) { 
             if (!flags[i]) {
                 //calculate element
                 return max - i;
